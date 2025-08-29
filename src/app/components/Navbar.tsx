@@ -49,7 +49,6 @@ const [value, setValue] = useState<string>("uz");
           </div>
 
           <div className="flex items-center gap-4">
-          
 <Select
   value={value}
   onChange={(val) => setValue(val)}
