@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import { ThemeProvider } from "./contexts/ThemeContext";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "BileTick",
   description: "cinema",
+  icons: {
+    icon: "/logoIcon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -25,14 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        <ThemeProvider>
-          <Navbar/>
-          {children}
-        </ThemeProvider>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

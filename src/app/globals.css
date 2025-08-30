@@ -1,60 +1,46 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #c61f1f;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --footer-bg: #111111;
+  --footer-border: #4b5563;
+}
+
 * {
   box-sizing: border-box;
   font-family: sans-serif;
 }
 
 .container {
-  max-width: 1308px;
+  max-width: 1180px;
   padding-left: 16px;
   padding-right: 16px;
+  margin: 0 auto;
 }
 
+html,
 body {
-  background-color: #ffffff;
-  color: #000000;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100%;
 }
 
-.dark body {
-  background-color: #000000; 
-  color: #ffffff;
-}
-
-html {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #2d2d2d;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #666;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #888;
+footer {
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  padding: 20px 0;
+  text-align: center;
 }
 
 .flag {
   transform: translateY(-10%);
+  transition: transform 0.3s ease;
+}
+.flag:hover {
+  transform: translateY(-20%);
 }

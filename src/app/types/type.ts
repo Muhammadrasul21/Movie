@@ -6,3 +6,15 @@ export interface NavbarItem {
   name: string;
   path: string;
 }
+
+export interface FooterItem {
+  id: number;
+  icon: IconType;
+  title: string;
+}
+
+export interface FooterCategory {
+  id: number;
+  icon: IconType;
+  title: string;
+}
