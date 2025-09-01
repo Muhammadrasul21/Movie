@@ -18,3 +18,6 @@ export interface FooterCategory {
   icon: IconType;
   title: string;
 }
+export interface HeroProps {
+  movies: any[];
+}

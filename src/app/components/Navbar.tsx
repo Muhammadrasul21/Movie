@@ -52,6 +52,7 @@ const Navbar: React.FC = () => {
                 width: 92,
                 backgroundColor: "#1f2937",
                 color: "#fff",
+                borderRadius:"10px"
               }}
             >
               <Option value="ru">

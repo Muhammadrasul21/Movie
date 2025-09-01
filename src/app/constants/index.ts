@@ -83,3 +83,5 @@ export const footerCategory: FooterCategory[] = [
     title: "Sport",
   },
 ];
+export const IMAGE_BASE_URL =
+  process.env.NEXT_PUBLIC_IMAGE_URL || "https://image.tmdb.org/t/p/original";

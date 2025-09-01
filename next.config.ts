@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   output: "standalone",
   // Optimize for production builds
   swcMinify: true,
+  images: {
+    domains: ["image.tmdb.org"], 
+  },
 };
 
 export default nextConfig;
