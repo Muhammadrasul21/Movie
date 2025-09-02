@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   // Optimize for production builds
   swcMinify: true,
   images: {
-    domains: ["image.tmdb.org"], 
+    domains: ["image.tmdb.org"],
   },
 };
 

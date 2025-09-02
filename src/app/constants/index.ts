@@ -24,19 +24,19 @@ export const navbarItems: NavbarItem[] = [
     id: 2,
     icon: BsFillTabletFill,
     name: "Movie",
-    path: "/movie",
+    path: "/pages/movie",
   },
   {
     id: 3,
     icon: FaBookmark,
     name: "Saved",
-    path: "/saved",
+    path: "/pages/saved",
   },
   {
     id: 4,
     icon: FaSearch,
     name: "Search",
-    path: "/search",
+    path: "/pages/search",
   },
 ];
 export const footerInfo: FooterItem[] = [

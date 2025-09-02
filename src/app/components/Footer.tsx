@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="container bg-[#111111] text-white p-[30px] rounded-xl">
+    <div className="container bg-[#111111] text-white p-[30px] rounded-xl mt-[120px]">
       <div className="footer p-8 flex justify-between">
         <div className="flex flex-col gap-2">
           <Link

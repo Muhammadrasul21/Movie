@@ -21,3 +21,10 @@ export interface FooterCategory {
 export interface HeroProps {
   movies: any[];
 }
+
+export type Movie = {
+  id: number;
+  title: string;
+  poster_path: string | null;
+  vote_average: number;
+};

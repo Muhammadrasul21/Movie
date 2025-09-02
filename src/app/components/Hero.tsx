@@ -10,14 +10,17 @@ import "swiper/css";
 import "swiper/css/thumbs";
 import "swiper/css/navigation";
 import Image from "next/image";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import BookmarkButton from "./BookmarkButton";
 
 const Hero: React.FC<HeroProps> = ({ movies }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [mainSwiper, setMainSwiper] = useState<any>(null);
 
   return (
     <div className="max-w-full px-4">
-      {/* Main Swiper */}
       <Swiper
+        onSwiper={setMainSwiper}
         className="mySwiper"
         modules={[Autoplay, Thumbs]}
         loop={true}
@@ -32,6 +35,11 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
                 backgroundImage: `url(${IMAGE_BASE_URL}${movie.backdrop_path})`,
               }}
             >
+              {/* Bookmark Button */}
+              <div className="absolute top-4 right-4 z-10">
+                <BookmarkButton movie={movie} size="lg" />
+              </div>
+              
               <div className="absolute bottom-7 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4 text-center">
                 <p className="font-medium text-3xl text-white">{movie.title}</p>
                 <div className="flex gap-4 text-white">
@@ -40,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
                   <p>{movie.vote_average}</p>
                   <p>{movie.vote_count}</p>
                 </div>
-                <Link href={`/movie/${movie.id}`}>
+                <Link href={`/pages/movie/${movie.id}`}>
                   <button className="flex items-center justify-center gap-2 px-[100px] py-3.5 bg-white text-primary rounded-xl font-medium cursor-pointer">
                     <FaPlay /> Watch
                   </button>
@@ -51,31 +59,51 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
         ))}
       </Swiper>
 
-      {/* Thumbnails Swiper */}
-      <div className="relative mt-6 flex justify-center">
+      <div className="flex items-center mt-1 container">
+        <button
+          className="hidden sm:flex thumb-prev w-12 h-12 rounded-full bg-[#1D1D1D] text-primary items-center justify-center shadow-lg"
+          onClick={() => {
+            if (mainSwiper) mainSwiper.slidePrev();
+            if (thumbsSwiper) thumbsSwiper.slidePrev();
+          }}
+        >
+          <MdKeyboardArrowLeft className="w-6 h-6" />
+        </button>
+
         <Swiper
           onSwiper={setThumbsSwiper}
-          className="w-full max-w-2xl !h-16 flex items-center"
+          className="w-[432px] !h-16"
           loop={true}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
           spaceBetween={10}
-          slidesPerView={4}
           modules={[Thumbs, Autoplay, Navigation]}
           watchSlidesProgress
           navigation={{
             prevEl: ".thumb-prev",
             nextEl: ".thumb-next",
           }}
+          observer={true}
+          observeParents={true}
+          resizeObserver={true}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            480: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
         >
           {movies.map((movie) => (
-            <SwiperSlide key={movie.id} className="cursor-pointer group !h-16 !w-[108px]">
+            <SwiperSlide
+              key={movie.id}
+              className="cursor-pointer group !h-16 rounded-md"
+            >
               <Image
                 width={108}
                 height={64}
-                className="w-full h-16 object-cover rounded-md transition-opacity duration-300 opacity-50 group-[.swiper-slide-thumb-active]:opacity-100"
+                className=" h-16 object-cover rounded-md transition-opacity duration-300 opacity-30 group-[.swiper-slide-thumb-active]:opacity-100"
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${movie.backdrop_path}`}
                 alt={movie.title}
               />
@@ -83,12 +111,14 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
           ))}
         </Swiper>
 
-        <button className="thumb-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/60 text-white p-2 rounded-full">
-          ‹
-        </button>
-
-        <button className="thumb-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/60 text-white p-2 rounded-full">
-          ›
+        <button
+          className="hidden sm:flex thumb-next w-12 h-12 rounded-full bg-[#1D1D1D] text-primary  items-center justify-center shadow-lg"
+          onClick={() => {
+            if (mainSwiper) mainSwiper.slideNext();
+            if (thumbsSwiper) thumbsSwiper.slideNext();
+          }}
+        >
+          <MdKeyboardArrowRight className="w-6 h-6" />
         </button>
       </div>
     </div>

@@ -3,11 +3,12 @@ import React from "react";
 import Hero from "./components/Hero";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "./api/moviesApi";
+import WeeklyData from "./components/WeeklyData";
 
 const Page = () => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["movies", { page: 10 }],
-    queryFn: () => getMovies({ page: 10 }),
+    queryKey: ["movies", { page: 1 }],
+    queryFn: () => getMovies({ page: 1 }),
   });
 
   if (isLoading) {
@@ -29,6 +30,7 @@ const Page = () => {
   return (
     <div>
       <Hero movies={data?.results || []} />
+      <WeeklyData movies={data?.results || []} />
     </div>
   );
 };

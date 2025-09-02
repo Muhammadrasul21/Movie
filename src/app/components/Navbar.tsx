@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo.svg";
-import bilogo from "../assets/bilogo.svg";
 import { Select } from "antd";
 import { navbarItems } from "../constants";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -17,8 +16,8 @@ const Navbar: React.FC = () => {
   const [value, setValue] = useState<string>("uz");
 
   return (
-    <div className="container sticky top-[50px] z-10">
-      <div className="flex justify-center w-full h-[82px] transition-colors duration-300">
+    <div className="w-full flex justify-center sticky top-0 left-0 z-10">
+      <div className="flex justify-center bg-[#ffffffe8] dark:bg-[#000000e8] w-full h-[82px]">
         <div className="py-4 container fixed flex justify-between items-center">
           <Link
             href="/"
@@ -52,7 +51,7 @@ const Navbar: React.FC = () => {
                 width: 92,
                 backgroundColor: "#1f2937",
                 color: "#fff",
-                borderRadius:"10px"
+                borderRadius: "10px",
               }}
             >
               <Option value="ru">
