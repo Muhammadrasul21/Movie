@@ -6,7 +6,7 @@ import { FaChevronRight } from "react-icons/fa";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { IMAGE_BASE_URL } from "../constants";
+import { getImageUrl } from "../constants";
 import "swiper/css";
 import "swiper/css/navigation";
 import BookmarkButton from "./BookmarkButton";
@@ -59,7 +59,7 @@ const WeeklyData: React.FC<HeroProps> = ({ movies }) => {
                   <Link href={`/pages/movie/${movie.id}`}>
                     <img
                       className="w-full h-[400px] object-cover rounded-xl"
-                      src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+                      src={getImageUrl(movie.poster_path, 'w500')}
                       alt={movie.title}
                     />
                   </Link>

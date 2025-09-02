@@ -10,6 +10,7 @@ import React, { useState, Suspense } from "react";
 import DetailSkeleton from "@/app/components/skeleton/DetailSkeleton";
 import { Skeleton } from "antd";
 import BookmarkButton from "@/app/components/BookmarkButton";
+import { getImageUrl } from "@/app/constants";
 
 const DetailPageContent = () => {
   const { id } = useParams<{ id: string }>();
@@ -76,7 +77,7 @@ const DetailPageContent = () => {
         <div
           className="w-[1360px] h-[700px] p-3 rounded-xl bg-gray-400 mt-2 flex flex-col items-center justify-between pb-[38px] text-white text-center relative"
           style={{
-            backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_URL}${movie?.backdrop_path})`,
+            backgroundImage: `url(${getImageUrl(movie?.backdrop_path || '', 'w1280')})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -197,7 +198,7 @@ const DetailPageContent = () => {
                 <Link href={`/pages/movie/${m.id}`}>
                   <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <img
-                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${m.poster_path}`}
+                      src={getImageUrl(m.poster_path, 'w500')}
                       alt={m.title}
                       className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {

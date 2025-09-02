@@ -6,6 +6,7 @@ import images from "../assets/images.png";
 import Skeleton from "./skeleton/skeleton";
 import { Movie } from "../types/type";
 import BookmarkButton from "./BookmarkButton";
+import { getImageUrl } from "../constants";
 
 interface MoviesProps {
   data?: { results: Movie[] };
@@ -32,7 +33,7 @@ const Movies: React.FC<MoviesProps> = ({ data, isLoading }) => {
                 className="w-full h-full object-cover"
                 src={
                   movie.poster_path
-                    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}${movie.poster_path}`
+                    ? getImageUrl(movie.poster_path, 'w500')
                     : (images as unknown as string)
                 }
                 alt={movie.title}

@@ -5,6 +5,7 @@ import { getSavedMovies } from "@/app/api/savedApi";
 import Link from "next/link";
 import BookmarkButton from "@/app/components/BookmarkButton";
 import { FaRegBookmark } from "react-icons/fa";
+import { getImageUrl } from "@/app/constants";
 
 export default function SavedMoviesPage() {
   const {
@@ -86,7 +87,7 @@ export default function SavedMoviesPage() {
                   <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div className="relative">
                       <img
-                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${movie.poster_path}`}
+                        src={getImageUrl(movie.poster_path, 'w500')}
                         alt={movie.title}
                         className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                         onError={(e) => {

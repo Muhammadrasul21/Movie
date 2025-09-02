@@ -4,7 +4,7 @@ import { Autoplay, Thumbs, Navigation } from "swiper/modules";
 import { FaPlay } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { HeroProps } from "../types/type";
-import { IMAGE_BASE_URL } from "../constants";
+import { getImageUrl } from "../constants";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/thumbs";
@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
             <div
               className="relative h-[640px] rounded-xl bg-cover bg-center"
               style={{
-                backgroundImage: `url(${IMAGE_BASE_URL}${movie.backdrop_path})`,
+                backgroundImage: `url(${getImageUrl(movie.backdrop_path, 'w1280')})`,
               }}
             >
               {/* Bookmark Button */}
@@ -104,7 +104,7 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
                 width={108}
                 height={64}
                 className=" h-16 object-cover rounded-md transition-opacity duration-300 opacity-30 group-[.swiper-slide-thumb-active]:opacity-100"
-                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${movie.backdrop_path}`}
+                src={getImageUrl(movie.backdrop_path, 'w300')}
                 alt={movie.title}
               />
             </SwiperSlide>
