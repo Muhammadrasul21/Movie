@@ -4,6 +4,8 @@ import Hero from "./components/Hero";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "./api/moviesApi";
 import WeeklyData from "./components/WeeklyData";
+import HeroSkeleton from "./components/skeleton/HeroSkeleton";
+import WeeklyDataSkeleton from "./components/skeleton/WeeklyDataSkeleton";
 
 const Page = () => {
   const { data, isLoading, isError } = useQuery({
@@ -13,8 +15,9 @@ const Page = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl">Loading...</div>
+      <div>
+        <HeroSkeleton />
+        <WeeklyDataSkeleton />
       </div>
     );
   }

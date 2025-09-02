@@ -18,10 +18,26 @@ export default function SavedMoviesPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500 mx-auto"></div>
-          <p className="mt-4 text-xl text-gray-300">Loading saved movies...</p>
+      <div className="min-h-screen bg-black text-white">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center mb-12">
+            <div className="h-12 bg-gray-400 rounded w-64 mx-auto mb-4 animate-pulse" />
+            <div className="h-6 bg-gray-400 rounded w-48 mx-auto animate-pulse" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div
+                key={index}
+                className="bg-gray-900 rounded-lg overflow-hidden shadow-lg"
+              >
+                <div className="h-80 bg-gray-400 animate-pulse" />
+                <div className="p-4">
+                  <div className="h-6 bg-gray-400 rounded w-3/4 mb-2 animate-pulse" />
+                  <div className="h-4 bg-gray-400 rounded w-1/2 animate-pulse" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -31,7 +47,7 @@ export default function SavedMoviesPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
-          <div className="text-red-500 text-6xl mb-4">⚠️</div>
+          <div className="h-16 w-16 bg-red-500 rounded-full mx-auto mb-4 animate-pulse" />
           <h2 className="text-2xl font-bold text-white mb-2">
             Error loading saved movies
           </h2>
@@ -54,9 +70,7 @@ export default function SavedMoviesPage() {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-            My Saved Movies
-          </h1>
+          <h1 className="text-5xl font-bold mb-4 text-primary">Saved Movies</h1>
           <p className="text-xl text-gray-400">
             {savedMovies.length} {savedMovies.length === 1 ? "movie" : "movies"}{" "}
             saved
@@ -118,7 +132,7 @@ export default function SavedMoviesPage() {
           </div>
         ) : (
           <div className="text-center py-12">
-            <div className="text-gray-400 text-6xl mb-4">📚</div>
+            <div className="h-16 w-16 bg-gray-400 rounded-full mx-auto mb-4 animate-pulse" />
             <h3 className="text-2xl font-bold text-white mb-2">
               No saved movies yet
             </h3>

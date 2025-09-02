@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies, getGenres } from "@/app/api/moviesApi";
 import Movies from "@/app/components/Movies";
 import { Pagination, Empty } from "antd";
+import Skeleton from "@/app/components/skeleton/skeleton";
 
-const MoviesPage = () => {
+const MoviesPageContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -92,6 +93,20 @@ const MoviesPage = () => {
         </div>
       )}
     </div>
+  );
+};
+
+const MoviesPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="container">
+          <Skeleton />
+        </div>
+      }
+    >
+      <MoviesPageContent />
+    </Suspense>
   );
 };
 

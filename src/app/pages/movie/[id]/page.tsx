@@ -6,12 +6,12 @@ import { getSingleMovie, getSingleItems } from "@/app/api/moviesApi";
 import Link from "next/link";
 import { FaPlay } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import DetailSkeleton from "@/app/components/skeleton/DetailSkeleton";
 import { Skeleton } from "antd";
 import BookmarkButton from "@/app/components/BookmarkButton";
 
-const DetailPage = () => {
+const DetailPageContent = () => {
   const { id } = useParams<{ id: string }>();
   const [rating, setRating] = useState(0);
 
@@ -233,4 +233,21 @@ const DetailPage = () => {
   );
 };
 
-export default DetailPage;
+const DetailPageWrapper = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full">
+          <div className="flex flex-col gap-10">
+            <DetailSkeleton />
+            <Skeleton />
+          </div>
+        </div>
+      }
+    >
+      <DetailPageContent />
+    </Suspense>
+  );
+};
+
+export default DetailPageWrapper;
