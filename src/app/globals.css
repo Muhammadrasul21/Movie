@@ -66,3 +66,9 @@ footer {
   height: 100%;
   object-fit: cover;
 }
+.category {
+  scrollbar-width: none;
+}
+.category::-webkit-scrollbar {
+  display: none;
+}

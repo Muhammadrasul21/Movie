@@ -1,7 +1,11 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getSavedMovies, addSavedMovie, removeSavedMovie } from "@/app/api/savedApi";
+import {
+  getSavedMovies,
+  addSavedMovie,
+  removeSavedMovie,
+} from "@/app/api/savedApi";
 import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 import { useState } from "react";
 
@@ -11,13 +15,17 @@ interface BookmarkButtonProps {
   className?: string;
 }
 
-export default function BookmarkButton({ movie, size = "md", className = "" }: BookmarkButtonProps) {
+export default function BookmarkButton({
+  movie,
+  size = "md",
+  className = "",
+}: BookmarkButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const queryClient = useQueryClient();
 
   // Add safety check for movie data
   if (!movie || !movie.id) {
-    console.warn('BookmarkButton: Movie data is missing or invalid:', movie);
+    console.warn("BookmarkButton: Movie data is missing or invalid:", movie);
     return null;
   }
 
@@ -31,12 +39,12 @@ export default function BookmarkButton({ movie, size = "md", className = "" }: B
   const saveMutation = useMutation({
     mutationFn: addSavedMovie,
     onSuccess: (data) => {
-      console.log('Movie saved successfully:', data);
+      console.log("Movie saved successfully:", data);
       queryClient.invalidateQueries({ queryKey: ["savedMovies"] });
       setIsLoading(false);
     },
     onError: (error) => {
-      console.error('Error saving movie:', error);
+      console.error("Error saving movie:", error);
       setIsLoading(false);
     },
   });
@@ -44,12 +52,12 @@ export default function BookmarkButton({ movie, size = "md", className = "" }: B
   const removeMutation = useMutation({
     mutationFn: removeSavedMovie,
     onSuccess: (data) => {
-      console.log('Movie removed successfully:', data);
+      console.log("Movie removed successfully:", data);
       queryClient.invalidateQueries({ queryKey: ["savedMovies"] });
       setIsLoading(false);
     },
     onError: (error) => {
-      console.error('Error removing movie:', error);
+      console.error("Error removing movie:", error);
       setIsLoading(false);
     },
   });
@@ -57,18 +65,22 @@ export default function BookmarkButton({ movie, size = "md", className = "" }: B
   const handleToggle = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (isLoading) return;
-    
-    console.log('BookmarkButton clicked:', { movieId: movie?.id, isInSaved, movie });
-    
+
+    console.log("BookmarkButton clicked:", {
+      movieId: movie?.id,
+      isInSaved,
+      movie,
+    });
+
     setIsLoading(true);
-    
+
     if (isInSaved) {
-      console.log('Removing movie from saved:', movie.id);
+      console.log("Removing movie from saved:", movie.id);
       removeMutation.mutate(movie.id);
     } else {
-      console.log('Adding movie to saved:', movie);
+      console.log("Adding movie to saved:", movie);
       saveMutation.mutate(movie);
     }
   };
@@ -76,13 +88,13 @@ export default function BookmarkButton({ movie, size = "md", className = "" }: B
   const sizeClasses = {
     sm: "w-8 h-8 text-sm",
     md: "w-10 h-10 text-base",
-    lg: "w-12 h-12 text-lg"
+    lg: "w-12 h-12 text-lg",
   };
 
   const iconSizes = {
     sm: "w-4 h-4",
-    md: "w-5 h-5", 
-    lg: "w-6 h-6"
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   return (
@@ -101,7 +113,9 @@ export default function BookmarkButton({ movie, size = "md", className = "" }: B
       title={isInSaved ? "Remove from saved" : "Add to saved"}
     >
       {isLoading ? (
-        <div className={`${iconSizes[size]} animate-spin rounded-full border-2 border-gray-300 border-t-primary`} />
+        <div
+          className={`${iconSizes[size]} animate-spin rounded-full border-2 border-gray-300 border-t-primary`}
+        />
       ) : isInSaved ? (
         <FaBookmark className={`${iconSizes[size]} text-red-500`} />
       ) : (

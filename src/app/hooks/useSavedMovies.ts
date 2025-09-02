@@ -1,5 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getSavedMovies, addSavedMovie, removeSavedMovie } from "../api/savedApi";
+import {
+  getSavedMovies,
+  addSavedMovie,
+  removeSavedMovie,
+} from "../api/savedApi";
 
 export const useSavedMovies = () => {
   const queryClient = useQueryClient();

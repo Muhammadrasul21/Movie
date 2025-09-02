@@ -7,7 +7,11 @@ import BookmarkButton from "@/app/components/BookmarkButton";
 import { FaRegBookmark } from "react-icons/fa";
 
 export default function SavedMoviesPage() {
-  const { data: savedMovies = [], isLoading, error } = useQuery({
+  const {
+    data: savedMovies = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["savedMovies"],
     queryFn: getSavedMovies,
   });
@@ -28,8 +32,12 @@ export default function SavedMoviesPage() {
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
-          <h2 className="text-2xl font-bold text-white mb-2">Error loading saved movies</h2>
-          <p className="text-gray-400 mb-4">Something went wrong while fetching your saved movies.</p>
+          <h2 className="text-2xl font-bold text-white mb-2">
+            Error loading saved movies
+          </h2>
+          <p className="text-gray-400 mb-4">
+            Something went wrong while fetching your saved movies.
+          </p>
           <Link
             href="/"
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
@@ -50,7 +58,8 @@ export default function SavedMoviesPage() {
             My Saved Movies
           </h1>
           <p className="text-xl text-gray-400">
-            {savedMovies.length} {savedMovies.length === 1 ? 'movie' : 'movies'} saved
+            {savedMovies.length} {savedMovies.length === 1 ? "movie" : "movies"}{" "}
+            saved
           </p>
         </div>
 
@@ -68,10 +77,10 @@ export default function SavedMoviesPage() {
                         className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = '/placeholder-poster.jpg';
+                          target.src = "/placeholder-poster.jpg";
                         }}
                       />
-                      <div 
+                      <div
                         className="absolute top-2 right-2 z-10"
                         onClick={(e) => e.stopPropagation()}
                       >
@@ -81,19 +90,21 @@ export default function SavedMoviesPage() {
                         {movie.vote_average?.toFixed(1)}
                       </div>
                     </div>
-                    
+
                     <div className="p-4">
-                   <h3 className="text-lg font-semibold text-white mb-2 line-clamp-1 group-hover:text-blue-400 transition-colors">
-  {movie.title}
-</h3>
+                      <h3 className="text-lg font-semibold text-white mb-2 line-clamp-1 group-hover:text-blue-400 transition-colors">
+                        {movie.title}
+                      </h3>
 
-
-                      
                       <div className="flex items-center justify-between text-sm text-gray-400">
-                        <span>{movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'}</span>
+                        <span>
+                          {movie.release_date
+                            ? new Date(movie.release_date).getFullYear()
+                            : "N/A"}
+                        </span>
                         <span>{movie.vote_count} votes</span>
                       </div>
-                      
+
                       {movie.overview && (
                         <p className="text-gray-300 text-sm mt-2 line-clamp-2">
                           {movie.overview}
@@ -108,9 +119,12 @@ export default function SavedMoviesPage() {
         ) : (
           <div className="text-center py-12">
             <div className="text-gray-400 text-6xl mb-4">📚</div>
-            <h3 className="text-2xl font-bold text-white mb-2">No saved movies yet</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">
+              No saved movies yet
+            </h3>
             <p className="text-gray-400 mb-6">
-              Start saving movies by clicking the bookmark icon on any movie you like!
+              Start saving movies by clicking the bookmark icon on any movie you
+              like!
             </p>
             <Link
               href="/"

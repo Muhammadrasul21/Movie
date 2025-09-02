@@ -18,4 +18,3 @@ export const getGenres = () => apiFetcher("/genre/movie/list");
 // Qidiruv
 export const getSearch = (params: { query: string }) =>
   apiFetcher("/search/movie", params);
-

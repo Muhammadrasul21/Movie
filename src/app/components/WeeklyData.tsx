@@ -17,10 +17,10 @@ const WeeklyData: React.FC<HeroProps> = ({ movies }) => {
       <div className="container flex items-center justify-between mb-4">
         <p className="text-xl font-semibold">During the week</p>
         <Link
-          href={"/pages/saved"}
+          href={"/pages/movie"}
           className="text-primary flex items-center font-medium cursor-pointer"
         >
-          Show saved <FaChevronRight className="w-4 h-4 ml-1" />
+          Show all <FaChevronRight className="w-4 h-4 ml-1" />
         </Link>
       </div>
 
@@ -64,7 +64,7 @@ const WeeklyData: React.FC<HeroProps> = ({ movies }) => {
                     />
                   </Link>
 
-                  <div 
+                  <div
                     className="absolute top-2 right-2 z-10"
                     onClick={(e) => e.stopPropagation()}
                   >

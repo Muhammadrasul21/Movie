@@ -4,30 +4,18 @@ import React from "react";
 import Link from "next/link";
 import images from "../assets/images.png";
 import Skeleton from "./skeleton/skeleton";
-import { useQuery } from "@tanstack/react-query";
-import { getMovies } from "@/app/api/moviesApi";
 import { Movie } from "../types/type";
 import BookmarkButton from "./BookmarkButton";
 
 interface MoviesProps {
-  data?: { results: Movie[] };  
+  data?: { results: Movie[] };
   isLoading?: boolean;
 }
 
 const Movies: React.FC<MoviesProps> = ({ data, isLoading }) => {
-  const query = useQuery({
-    queryKey: ["movies"],
-    queryFn: () => getMovies({ page: 1 }),
-    enabled: !data,
-  });
+  if (isLoading) return <Skeleton />;
 
-  const loading = isLoading ?? query.isLoading;
-  const error = query.isError;
-
-  if (loading) return <Skeleton />;
-  if (error) return <p className="text-red-500">Error loading movies...</p>;
-
-  const moviesArray: Movie[] = data?.results || query.data?.results || [];
+  const moviesArray: Movie[] = data?.results || [];
 
   return (
     <div className="container">
@@ -39,7 +27,7 @@ const Movies: React.FC<MoviesProps> = ({ data, isLoading }) => {
             key={movie.id}
             className="border relative group overflow-hidden border-gray-300 dark:border-gray-800 dark:bg-gray-700 rounded-lg"
           >
-            <Link href={`/movie/${movie.id}`} className="block h-[350px]">
+            <Link href={`/pages/movie/${movie.id}`} className="block h-[350px]">
               <img
                 className="w-full h-full object-cover"
                 src={

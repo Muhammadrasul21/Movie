@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
               <div className="absolute top-4 right-4 z-10">
                 <BookmarkButton movie={movie} size="lg" />
               </div>
-              
+
               <div className="absolute bottom-7 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4 text-center">
                 <p className="font-medium text-3xl text-white">{movie.title}</p>
                 <div className="flex gap-4 text-white">

@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.id}
                 href={item.path}
-                className="flex items-center gap-2 transition-colors duration-200 text-[#A1A1A1] hover:text-gray-200"
+                className="flex items-center gap-2 transition-colors duration-200 text-[#A1A1A1] hover:text-primary"
               >
                 <div className="flex flex-col gap-[6px] items-center">
                   <item.icon className="min-h-6 min-w-6" />

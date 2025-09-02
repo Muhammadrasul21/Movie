@@ -60,7 +60,7 @@ const MoviesPage = () => {
 
   return (
     <div className="container">
-      <div className="flex category gap-2 mb-4 overflow-auto pb-2 scrollbar-hide">
+      <div className="flex category gap-2 mb-4 overflow-auto pb-2 category ">
         {genredata?.genres?.map((genre: any) => (
           <div
             key={genre.id}
@@ -77,7 +77,7 @@ const MoviesPage = () => {
       </div>
 
       {!data?.total_results && !isLoading && <Empty />}
-       <Movies data={data} isLoading={isLoading} /> 
+      <Movies data={data} isLoading={isLoading} />
 
       {!!data?.total_results && (
         <div className="flex my-5 justify-center">

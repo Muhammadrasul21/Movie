@@ -25,10 +25,9 @@ const DetailPage = () => {
     enabled: !!id,
   });
 
-  // Debug: Log movie data when it's loaded
   React.useEffect(() => {
     if (movie) {
-      console.log('Movie data loaded:', movie);
+      console.log("Movie data loaded:", movie);
     }
   }, [movie]);
 
@@ -89,15 +88,18 @@ const DetailPage = () => {
               className="w-14 h-14 bg-[#ffffffc4] dark:bg-[#000000c4] flex items-center justify-center rounded-xl text-primary cursor-pointer hover:bg-opacity-80 transition-all"
             >
               <MdKeyboardArrowLeft className="w-7 h-7" />
-            </Link> 
+            </Link>
 
-                        <div className="flex gap-2">
+            <div className="flex gap-2">
               {movie && (
                 <div onClick={(e) => e.stopPropagation()}>
-                  <BookmarkButton movie={movie} size="lg" />
+                  <BookmarkButton
+                    movie={movie}
+                    size="lg"
+                    className="w-14 h-14"
+                  />
                 </div>
               )}
-
 
               <button className="w-14 h-14 bg-[#ffffffc4] dark:bg-[#000000c4] flex items-center justify-center rounded-xl text-primary cursor-pointer hover:bg-opacity-80 transition-all">
                 <svg
@@ -214,9 +216,9 @@ const DetailPage = () => {
                     </div>
                   </div>
                 </Link>
-                
+
                 {/* Bookmark Button for Similar Movies */}
-                <div 
+                <div
                   className="absolute top-2 right-2 z-10"
                   onClick={(e) => e.stopPropagation()}
                 >
