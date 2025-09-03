@@ -87,7 +87,7 @@ export const IMAGE_BASE_URL =
   process.env.NEXT_PUBLIC_IMAGE_URL || "https://image.tmdb.org/t/p";
 
 // Helper function to get optimized image URL
-export const getImageUrl = (path: string, size: string = 'w500') => {
-  if (!path) return '/placeholder-poster.jpg';
+export const getImageUrl = (path: string, size: string = "w500") => {
+  if (!path) return "/placeholder-poster.jpg";
   return `${IMAGE_BASE_URL}/${size}${path}`;
 };

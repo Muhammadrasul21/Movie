@@ -77,7 +77,7 @@ const DetailPageContent = () => {
         <div
           className="w-[1360px] h-[700px] p-3 rounded-xl bg-gray-400 mt-2 flex flex-col items-center justify-between pb-[38px] text-white text-center relative"
           style={{
-            backgroundImage: `url(${getImageUrl(movie?.backdrop_path || '', 'w1280')})`,
+            backgroundImage: `url(${getImageUrl(movie?.backdrop_path || "", "w1280")})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -198,7 +198,7 @@ const DetailPageContent = () => {
                 <Link href={`/pages/movie/${m.id}`}>
                   <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <img
-                      src={getImageUrl(m.poster_path, 'w500')}
+                      src={getImageUrl(m.poster_path, "w500")}
                       alt={m.title}
                       className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {

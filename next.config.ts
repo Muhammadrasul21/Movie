@@ -11,14 +11,14 @@ const nextConfig: NextConfig = {
     // Alternative: Use remotePatterns for more control (recommended)
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'image.tmdb.org',
-        port: '',
-        pathname: '/t/p/**',
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        port: "",
+        pathname: "/t/p/**",
       },
     ],
     // Image optimization settings
-    formats: ['image/webp', 'image/avif'],
+    formats: ["image/webp", "image/avif"],
     // Minimum cache time (in seconds)
     minimumCacheTTL: 60,
     // Enable image optimization
@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
   },
   // Environment variables for Vercel
   env: {
-    NEXT_PUBLIC_IMAGE_URL: 'https://image.tmdb.org/t/p',
+    NEXT_PUBLIC_IMAGE_URL: "https://image.tmdb.org/t/p",
   },
 };
 

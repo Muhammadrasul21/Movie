@@ -59,7 +59,7 @@ const WeeklyData: React.FC<HeroProps> = ({ movies }) => {
                   <Link href={`/pages/movie/${movie.id}`}>
                     <img
                       className="w-full h-[400px] object-cover rounded-xl"
-                      src={getImageUrl(movie.poster_path, 'w500')}
+                      src={getImageUrl(movie.poster_path, "w500")}
                       alt={movie.title}
                     />
                   </Link>

@@ -69,7 +69,6 @@ export default function SavedMoviesPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4 text-primary">Saved Movies</h1>
           <p className="text-xl text-gray-400">
@@ -78,7 +77,6 @@ export default function SavedMoviesPage() {
           </p>
         </div>
 
-        {/* Saved Movies Grid */}
         {savedMovies.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {savedMovies.map((movie: any) => (
@@ -87,7 +85,7 @@ export default function SavedMoviesPage() {
                   <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div className="relative">
                       <img
-                        src={getImageUrl(movie.poster_path, 'w500')}
+                        src={getImageUrl(movie.poster_path, "w500")}
                         alt={movie.title}
                         className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                         onError={(e) => {

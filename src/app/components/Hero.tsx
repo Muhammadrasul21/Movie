@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
             <div
               className="relative h-[640px] rounded-xl bg-cover bg-center"
               style={{
-                backgroundImage: `url(${getImageUrl(movie.backdrop_path, 'w1280')})`,
+                backgroundImage: `url(${getImageUrl(movie.backdrop_path, "w1280")})`,
               }}
             >
               {/* Bookmark Button */}
@@ -104,7 +104,7 @@ const Hero: React.FC<HeroProps> = ({ movies }) => {
                 width={108}
                 height={64}
                 className=" h-16 object-cover rounded-md transition-opacity duration-300 opacity-30 group-[.swiper-slide-thumb-active]:opacity-100"
-                src={getImageUrl(movie.backdrop_path, 'w300')}
+                src={getImageUrl(movie.backdrop_path, "w300")}
                 alt={movie.title}
               />
             </SwiperSlide>
