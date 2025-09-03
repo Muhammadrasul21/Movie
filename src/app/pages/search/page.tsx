@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Movies from "@/app/components/Movies";
 import { Input, Empty } from "antd";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -10,7 +10,7 @@ import Skeleton from "@/app/components/skeleton/skeleton";
 
 const { Search } = Input;
 
-const SearchPage = () => {
+const SearchPageContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -52,6 +52,14 @@ const SearchPage = () => {
 
       {!!data?.results?.length && <Movies data={data} isLoading={isLoading} />}
     </div>
+  );
+};
+
+const SearchPage = () => {
+  return (
+    <Suspense fallback={<Skeleton />}>
+      <SearchPageContent />
+    </Suspense>
   );
 };
 
