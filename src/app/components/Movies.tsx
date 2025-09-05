@@ -11,16 +11,17 @@ import { getImageUrl } from "../constants";
 interface MoviesProps {
   data?: { results: Movie[] };
   isLoading?: boolean;
+  title?: string;
 }
 
-const Movies: React.FC<MoviesProps> = ({ data, isLoading }) => {
+const Movies: React.FC<MoviesProps> = ({ data, isLoading, title = "Movies" }) => {
   if (isLoading) return <Skeleton />;
 
   const moviesArray: Movie[] = data?.results || [];
 
   return (
     <div className="container">
-      <p className="mb-4 text-xl font-medium dark:text-primary">Movies</p>
+      <p className="mb-4 text-xl font-medium dark:text-primary">{title}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
         {moviesArray.map((movie) => (

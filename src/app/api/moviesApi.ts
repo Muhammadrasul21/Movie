@@ -24,3 +24,6 @@ export const getMovieVideos = (id: number) => getSingleItems(id, "videos");
 
 // casts (credits)
 export const getMovieCredits = (id: number) => getSingleItems(id, "credits");
+
+// similar movies
+export const getSimilarMovies = (id: number) => getSingleItems(id, "similar");
